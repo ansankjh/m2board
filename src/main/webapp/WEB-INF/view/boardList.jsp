@@ -17,7 +17,7 @@
 	<body>
 		<h1>MODEL1 BOARD LIST</h1>
 		<div>
-			<a href="<%=request.getContextPath()%>/model1/m1AddBoardForm.jsp">글입력</a>
+			<a href="<%=request.getContextPath()%>/AddBoardForm">글입력</a>
 		</div>
 		<table border="1">
 			<thead>

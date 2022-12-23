@@ -41,8 +41,8 @@
 				</tbody>
 			</table>
 			<div>
-				<a href="<%=request.getContextPath()%>/model1/m1ModifyBoardForm.jsp?no=<%=no%>">수정</a>
-				<a href="<%=request.getContextPath()%>/model1/m1RemoveBoard.jsp?no=<%=no%>">삭제</a>
+				<a href="<%=request.getContextPath()%>/ModifyBoardForm.jsp?no=<%=no%>">수정</a>
+				<a href="<%=request.getContextPath()%>/RemoveBoard?no=<%=no%>">삭제</a>
 			</div>
 		</div>
 	</body>

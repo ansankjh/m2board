@@ -13,7 +13,7 @@ import service.*;
 import vo.*;
 
 // Model(일반 클래스) - Controller(Servlet클래스 상속) - View(JSP)
-@WebServlet("/mvc/BoardListController") // 맵핑?
+@WebServlet("/BoardList") // 맵핑?
 public class BoardList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardService boardService = new BoardService();
