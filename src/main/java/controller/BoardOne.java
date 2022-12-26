@@ -16,11 +16,13 @@ import vo.*;
 @WebServlet("/BoardOne") // 맵핑?
 public class BoardOne extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int no = Integer.parseInt(request.getParameter("no"));
+		
 		BoardService boardService = new BoardService();
-		ArrayList<Board> list = boardService.getBoardList();
+		Board board = boardService.getBoardOne(no);
 		
 		// view와 공유할 모델데이터 설정
-		request.setAttribute("list", list);
+		request.setAttribute("board", board);
 		
 		// view 연결
 		// RequestDispatcher 1) include 2) forward

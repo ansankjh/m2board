@@ -54,11 +54,11 @@ public class BoardService {
 	}
 	
 	// m1BoardOne.jsp
-	public ArrayList<Board> getBoardOne(int no) {
+	public Board getBoardOne(int no) {
 		// boardDao 초기화? 공간확보?
 		boardDao = new BoardDao();
 		// 객체 초기화
-		ArrayList<Board> list = null;
+		Board board = null;
 		// 드라이버 초기화
 		Connection conn = null;
 		
@@ -68,7 +68,7 @@ public class BoardService {
 			// AutoCommit끄기
 			conn.setAutoCommit(false);
 			// 메서드 호출
-			list = boardDao.selectBoardOne(conn, no);
+			board = boardDao.selectBoardOne(conn, no);
 			// 커밋하기
 			conn.commit();
 		} catch(Exception e) {
@@ -87,7 +87,7 @@ public class BoardService {
 				e.printStackTrace();
 			}
 		}
-		return list;
+		return board;
 	}
 	
 	// m1BoardAction.jsp
@@ -126,11 +126,11 @@ public class BoardService {
 	}
 	
 	// m1ModifyBoardForm.jsp
-		public ArrayList<Board> getBoardModify(int no) {
+		public Board getBoardModify(int no) {
 			// boardDao 초기화? 공간확보?
 			boardDao = new BoardDao();
 			// 객체 초기화
-			ArrayList<Board> list = null;
+			Board board = null;
 			// 드라이버 초기화
 			Connection conn = null;
 			
@@ -140,7 +140,7 @@ public class BoardService {
 				// AutoCommit끄기
 				conn.setAutoCommit(false);
 				// 메서드 호출
-				list = boardDao.selectBoardOne(conn, no);
+				board = boardDao.selectBoardModify(conn, no);
 				// 커밋하기
 				conn.commit();
 			} catch(Exception e) {
@@ -159,7 +159,7 @@ public class BoardService {
 					e.printStackTrace();
 				}
 			}
-			return list;
+			return board;
 		}
 	
 	// m1ModifyBoardForm.jsp

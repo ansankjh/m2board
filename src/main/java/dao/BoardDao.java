@@ -28,10 +28,10 @@ public class BoardDao {
 	}
 	
 	// m1BoardOne.jsp
-	public ArrayList<Board> selectBoardOne(Connection conn, int no) throws Exception {
-		ArrayList<Board> list = null;
+	public Board selectBoardOne(Connection conn, int no) throws Exception {
+		Board board = null;
 		// 쿼리문 작성
-		String sql = "SELECT title, content FROM board WHERE no = ?";
+		String sql = "SELECT no,title, content FROM board WHERE no = ?";
 		// 쿼리 객체생성
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		// 쿼리 ?값 지정
@@ -39,16 +39,15 @@ public class BoardDao {
 		// 쿼리 실행
 		ResultSet rs = stmt.executeQuery();
 		
-		list = new ArrayList<Board>();
-		while(rs.next()) {
-			Board b = new Board();
-			b.setTitle(rs.getString("title"));
-			b.setContent(rs.getString("content"));
-			list.add(b);
+		if(rs.next()) {
+			board = new Board();
+			board.setNo(rs.getInt("no"));
+			board.setTitle(rs.getString("title"));
+			board.setContent(rs.getString("content"));
 		}
 		stmt.close();
 		rs.close();
-		return list;
+		return board;
 	}
 	
 	// m1BoardAction.jsp
@@ -69,10 +68,10 @@ public class BoardDao {
 	}
 	
 	// m1ModifyBoardForm.jsp
-	public ArrayList<Board> selectBoardModify(Connection conn, int no) throws Exception {
-		ArrayList<Board> list = null;
+	public Board selectBoardModify(Connection conn, int no) throws Exception {
+		Board board = null;
 		// 쿼리문 작성
-		String sql = "SELECT title, content FROM board WHERE no = ?";
+		String sql = "SELECT no,title, content FROM board WHERE no = ?";
 		// 쿼리 객체생성
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		// 쿼리 ?값 지정
@@ -80,16 +79,15 @@ public class BoardDao {
 		// 쿼리 실행
 		ResultSet rs = stmt.executeQuery();
 		
-		list = new ArrayList<Board>();
-		while(rs.next()) {
-			Board b = new Board();
-			b.setTitle(rs.getString("title"));
-			b.setContent(rs.getString("content"));
-			list.add(b);
+		if(rs.next()) {
+			board  = new Board();
+			board.setNo(rs.getInt("no"));
+			board.setTitle(rs.getString("title"));
+			board.setContent(rs.getString("content"));
 		}
 		stmt.close();
 		rs.close();
-		return list;
+		return board;
 	}
 	
 	// m1ModifyBoardForm.jsp

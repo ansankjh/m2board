@@ -1,16 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.util.*" %>
-<%@ page import = "service.*" %>
-<%@ page import = "vo.*" %>
-<%
-	int no = Integer.parseInt(request.getParameter("no"));
-	// System.out.println(no);
-	
-	// model1.service 호출
-	BoardService boardService = new BoardService();
-	ArrayList<Board> list = boardService.getBoardOne(no);
-
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,21 +17,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%
-						for(Board b : list) {
-					%>
-							<tr>
-								<td><%=b.getTitle()%></td>
-								<td><%=b.getContent()%></td>
-							</tr>
-					<%
-						}
-					%>
+					<tr>
+						<td>${board.title}</td>
+						<td>${board.content}</td>
+					</tr>
 				</tbody>
 			</table>
 			<div>
-				<a href="<%=request.getContextPath()%>/ModifyBoardForm.jsp?no=<%=no%>">수정</a>
-				<a href="<%=request.getContextPath()%>/RemoveBoard?no=<%=no%>">삭제</a>
+				<a href="${pageContext.request.contextPath}/ModifyBoardForm?no=${board.no}">수정</a>
+				<a href="${pageContext.request.contextPath}/RemoveBoard?no=${board.no}">삭제</a>
 			</div>
 		</div>
 	</body>
